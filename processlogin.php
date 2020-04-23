@@ -44,34 +44,23 @@ if($errorCount > 0){
                 $_SESSION['email'] = $userObject->email;
                 $_SESSION['fullname'] = $userObject->first_name . " " . $userObject->last_name;
                 $_SESSION['role'] = $userObject->designation;
-                $_SESSION["userObject"] =  json_encode($userObject)
-               
+                date_default_timezone_get("Africa/Lagos");
+$dateData = date('d M Y h:i:s A');
 
-                
-                $data= array(
-                    'time of login'=>Date("D_d_M_y_H_i_A")
-                   );
-                  
-                   $jsondata = json_encode($data);
-
-               file_put_contents("db/users/"."Logindetails.json", ($jsondata).$currentUser->email);
-               if($userObject->designation=="Patient"){
-                redirect_to("patientdashboard.php");
-            }
-            else if($userObject->designation=="Medical Team (MT)"){
-                redirect_to("dashboard.php");
-
-                }else if($userObject->designation=="Super Admin"){
-                    redirect_to("admindashboard.php");
-
+ //count all users
+ $allUsers = scandir("db/users/");
+ $countAllUsers = count($allUsers);
+     $newUserId = ($countAllUsers-1);
+                if($userObject->designation == 'Patient'){
+                    redirect_to("patientdashboard.php");
+                }else{
+                    redirect_to("dashboard.php"); 
                 }
-                die();
-            }
-          
-        }        
-        
-
-    set_alert('error',"Invalid Email or Password");
+                    
+                    die();
+                }
+              
+            }    set_alert('error',"Invalid Email or Password");
     redirect_to("login.php");
     die();
 

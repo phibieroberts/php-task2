@@ -36,7 +36,13 @@ if($errorCount > 0){
     header("Location: register.php");
 
 }else{
-
+    date_default_timezone_get("Africa/Lagos");
+    $dateData = date('d M Y h:i:s A');
+    
+     //count all users
+     $allUsers = scandir("db/users/");
+     $countAllUsers = count($allUsers);
+         $newUserId = ($countAllUsers-1);
      $newUserId = ($countAllUsers-1);
 
     $userObject = [

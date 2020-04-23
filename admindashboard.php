@@ -8,8 +8,6 @@ header("Location: login.php");
 ?>
 <h3>Dashboard</h3>
 <p>Welcome,</p>
-Welcome, <?php echo $_SESSION['full_name'] ?>, You are logged in as (<?php echo $_SESSION['role'] ?>), and your ID is <?php echo $_SESSION['loggedIn'] ?>.
-
 <?php echo $userObject->first_name ." ". $userObject->last_name; ?> You are logged in as( <?php echo $userObject->designation;?> and your ID is <?php echo $_SESSION['loggedIn'] ?>
 <?php include_once('lib/footer.php');
 ?>
